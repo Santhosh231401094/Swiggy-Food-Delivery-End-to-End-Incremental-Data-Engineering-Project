@@ -1,0 +1,3 @@
+order_id,order_time,delivery_time,restaurant,cuisine,total_amount,rating,location,city,ordered_qty,book_table,online_order,distance_km
+ORD_4011,2023-12-02 18:10:00,2023-12-02 18:35:00,Toit,Italian,175.60,4.4/5,Indiranagar,Bengaluru,2,No,Yes,4.90
+ORD_4012,2023-12-02 19:05:00,2023-12-02 19:32:00,Meghana Foods,Biryani,240.80,4.5/5,Whitefield,Bengaluru,3,Yes,Yes,7.20
