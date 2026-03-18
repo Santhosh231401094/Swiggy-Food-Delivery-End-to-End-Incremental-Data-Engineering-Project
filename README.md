@@ -25,19 +25,19 @@ Data cleaning and transformations were implemented using PySpark notebooks.
 
 Key Transformations
 
-**Missing Value Handling**
+**1. Missing Value Handling**
 
 Filled categorical columns with "NA"
 
 Filled numeric columns with 0
 
-**String Standardization**
+**2. String Standardization**
 
 Fixed inconsistent city names such as "Bnegaluru" → "Bengaluru"
 
 Applied initcap(), trim(), and regexp_replace()
 
-**Conditional Logic**
+**3. Conditional Logic**
 
 If online_order = 'No'
 
@@ -48,7 +48,7 @@ delivery_time = NULL
 distance_km = NULL
 ```
 
-**Rating Transformation**
+**4. Rating Transformation**
 
 Converted rating strings like "4.5/5" to numeric floats.
 
