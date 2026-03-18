@@ -128,9 +128,9 @@ Microsoft Fabric sometimes **delays metadata updates** after a table load.
 
 Without the wait:
 
-The pipeline fetches stale metadata
+1. The pipeline fetches stale metadata
 
-Newly inserted rows are not detected
+2. Newly inserted rows are not detected
 
 Adding the wait ensures:
 
@@ -142,9 +142,9 @@ Adding the wait ensures:
 
 After each successful run:
 
-The swiggy_incremental table is truncated
+1. The swiggy_incremental table is truncated
 
-The main staging table keeps full history
+2. The main staging table keeps full history
 
 Benefits:
 
@@ -168,23 +168,17 @@ check queries in `/SQL_warehouse`
 
 
 A Semantic Model was created to connect:
+
+1. Fact tables
+
+2. Dimension tables
+
 <img width="1911" height="916" alt="Screenshot 2026-03-17 232013" src="https://github.com/user-attachments/assets/1d4e9305-30e2-49ad-97e1-72d5eacc61bd" />
 <img width="1911" height="924" alt="Screenshot 2026-03-17 235223" src="https://github.com/user-attachments/assets/b70bbc84-1f6a-4f89-8a30-6a0860f5e962" />
 
-Fact tables
 
-Dimension tables
 
-This enabled high-performance reporting in Power BI.
+✔ This enabled high-performance reporting in Power BI.
 
-Dashboard Highlights
-
-Revenue by cuisine
-
-Order trends by time
-
-Online vs offline order distribution
-
-Restaurant performance metrics
 
 Delivery efficiency analysis
