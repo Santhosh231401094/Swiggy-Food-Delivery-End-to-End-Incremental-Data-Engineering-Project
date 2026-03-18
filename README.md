@@ -178,6 +178,9 @@ A Semantic Model was created to connect:
 <img width="1911" height="916" alt="Screenshot 2026-03-17 232013" src="https://github.com/user-attachments/assets/1d4e9305-30e2-49ad-97e1-72d5eacc61bd" />
 <img width="1911" height="924" alt="Screenshot 2026-03-17 235223" src="https://github.com/user-attachments/assets/b70bbc84-1f6a-4f89-8a30-6a0860f5e962" />
 
+✔ This enabled high-performance reporting in Power BI.
+
+
 ## Tech Stack
 
 Platform: Microsoft Fabric (Lakehouse, Warehouse, Data Factory)
@@ -187,5 +190,3 @@ Languages: PySpark, T-SQL
 Modeling: Star Schema (Fact & Dimension)
 
 Visualization: Power BI (Semantic Modeling)
-
-✔ This enabled high-performance reporting in Power BI.
