@@ -19,25 +19,25 @@ Data is stored in Delta format for efficient processing.
 
 The table acts as the historical raw data source.
 
-##🥈 Silver Layer – Data Cleaning & Transformation
+## 🥈 Silver Layer – Data Cleaning & Transformation
 
 Data cleaning and transformations were implemented using PySpark notebooks.
 
 Key Transformations
 
-Missing Value Handling
+**Missing Value Handling**
 
 Filled categorical columns with "NA"
 
 Filled numeric columns with 0
 
-String Standardization
+**String Standardization**
 
 Fixed inconsistent city names such as "Bnegaluru" → "Bengaluru"
 
 Applied initcap(), trim(), and regexp_replace()
 
-Conditional Logic
+**Conditional Logic**
 
 If online_order = 'No'
 
@@ -48,8 +48,7 @@ delivery_time = NULL
 distance_km = NULL
 ```
 
-
-Rating Transformation
+**Rating Transformation**
 
 Converted rating strings like "4.5/5" to numeric floats.
 
@@ -58,29 +57,33 @@ Converted rating strings like "4.5/5" to numeric floats.
 
 The pipeline was designed to load only new records using incremental logic.
 
-Step 1 — Lookup Activity
+**Step 1 — Lookup Activity**
 
 Fetch the latest order number already processed.
 
+```
 SELECT MAX(CAST(SUBSTRING(order_id,5,10) AS INT)) AS last_order_num
 FROM Bronze.dbo.swiggy
+```
 
 This value is stored in a pipeline variable.
 
-Step 2 — Incremental Copy
+**Step 2 — Incremental Copy**
 
 Only new rows greater than the last processed order ID are loaded.
 
 Example logic:
 
+```
 order_id > last_order_num
+```
 ## ⏱️ Wait Activity (Important)
 
 A 30-second Wait Activity was introduced before the second Copy Data activity.
 
 Why this was necessary
 
-Microsoft Fabric sometimes delays metadata updates after a table load.
+Microsoft Fabric sometimes **delays metadata updates** after a table load.
 
 Without the wait:
 
