@@ -162,7 +162,7 @@ A Star Schema was implemented in the Fabric Data Warehouse using T-SQL Stored Pr
 ## 📊 Business Insights & SQL Analysis
 
 More than 20 analytical queries were created to generate business insights.
-check queries in /SQL_warehouse
+check queries in `/SQL_warehouse`
 
 ## 📈 Power BI Dashboard
 
