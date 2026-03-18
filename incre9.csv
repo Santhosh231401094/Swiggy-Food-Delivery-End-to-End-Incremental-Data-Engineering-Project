@@ -1,3 +1,0 @@
-order_id,order_time,delivery_time,restaurant,cuisine,total_amount,rating,location,city,ordered_qty,book_table,online_order,distance_km
-ORD_4017,2023-12-04 12:10:00,2023-12-04 12:36:00,Truffles,Fast Food,198.45,4.5/5,Indiranagar,Bengaluru,3,No,Yes,4.30
-ORD_4018,2023-12-04 13:15:00,2023-12-04 13:40:00,Nandhini,North Indian,220.60,4.3/5,HSR Layout,Bengaluru,4,Yes,Yes,5.70
