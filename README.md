@@ -1,16 +1,17 @@
 # Swiggy Food Delivery: End-to-End Incremental Data Engineering Project
 
-📌 Project Overview
+## 📌 Project Overview
 
 This project builds a robust end-to-end data pipeline in Microsoft Fabric that processes Swiggy delivery data from raw ingestion to an interactive Power BI dashboard.
 
 Instead of a simple one-time data load, this solution implements a Medallion Architecture (Bronze → Silver → Gold) along with an Incremental Loading pattern to ensure only new records are processed, improving performance, scalability, and cost efficiency.
 
-🏗️ Data Architecture
+## 🏗️ Data Architecture
 
 The project follows the Medallion Architecture.
 <img width="1291" height="641" alt="swiggy1 drawio (1)" src="https://github.com/user-attachments/assets/e59e74e5-7672-40ee-89cb-089c40783b83" />
-🥉 Bronze Layer – Raw Data (Lakehouse)
+
+## 🥉 Bronze Layer – Raw Data (Lakehouse)
 
 Ingested raw CSV data from GitHub into a Lakehouse staging table (swiggy).
 
@@ -18,7 +19,7 @@ Data is stored in Delta format for efficient processing.
 
 The table acts as the historical raw data source.
 
-🥈 Silver Layer – Data Cleaning & Transformation
+##🥈 Silver Layer – Data Cleaning & Transformation
 
 Data cleaning and transformations were implemented using PySpark notebooks.
 
@@ -53,7 +54,7 @@ Rating Transformation
 Converted rating strings like "4.5/5" to numeric floats.
 
 
-🚀 Incremental Data Pipeline (Fabric Data Factory)
+## 🚀 Incremental Data Pipeline (Fabric Data Factory)
 
 The pipeline was designed to load only new records using incremental logic.
 
@@ -73,7 +74,7 @@ Only new rows greater than the last processed order ID are loaded.
 Example logic:
 
 order_id > last_order_num
-⏱️ Wait Activity (Important)
+## ⏱️ Wait Activity (Important)
 
 A 30-second Wait Activity was introduced before the second Copy Data activity.
 
@@ -93,7 +94,7 @@ Adding the wait ensures:
 ✔ Incremental copy works reliably
 ✔ Pipeline failures are prevented
 
-🧹 Truncation Strategy
+## 🧹 Truncation Strategy
 
 After each successful run:
 
@@ -109,16 +110,16 @@ Keeps incremental table lightweight
 
 Preserves historical data
 
-🧠 Dimensional Modeling (Gold Layer)
+## 🧠 Dimensional Modeling (Gold Layer)
 
 A Star Schema was implemented in the Fabric Data Warehouse using T-SQL Stored Procedures.
 <img width="1911" height="927" alt="Screenshot 2026-03-17 232408" src="https://github.com/user-attachments/assets/aa2e48a8-2df2-43ce-bd9d-0cbce1da51f4" />
 
-📊 Business Insights & SQL Analysis
+## 📊 Business Insights & SQL Analysis
 
 More than 20 analytical queries were created to generate business insights.
 
-📈 Power BI Dashboard
+## 📈 Power BI Dashboard
 
 
 A Semantic Model was created to connect:
