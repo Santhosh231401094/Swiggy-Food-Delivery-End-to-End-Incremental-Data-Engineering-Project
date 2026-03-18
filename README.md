@@ -15,9 +15,59 @@ The project follows the Medallion Architecture.
 
 Ingested raw CSV data from GitHub into a Lakehouse staging table (swiggy).
 
-Data is stored in Delta format for efficient processing.
-
 The table acts as the historical raw data source.
+
+## ⏱️ Wait Activity (Important)
+
+A 30-second Wait Activity was introduced before the second Copy Data activity.
+
+Why this was necessary
+
+Microsoft Fabric sometimes **delays metadata updates** after a table load.
+
+Without the wait:
+
+1. The pipeline fetches stale metadata
+
+2. Newly inserted rows are not detected
+
+Adding the wait ensures:
+
+✔ Latest rows are visible                                                                                                                                                                                                                                                                                          
+✔ Incremental copy works reliably                                                                                                                                                                                                                                                                                        
+✔ Pipeline failures are prevented
+
+
+## 🚀 Incremental Data Pipeline (Fabric Data Factory)
+
+The pipeline was designed to load only new records using incremental logic.
+
+**Step 1 — Lookup Activity**
+
+Fetch the latest order number already processed.
+<img width="1909" height="914" alt="image" src="https://github.com/user-attachments/assets/d0c84253-c887-47ab-ac22-d0f30cbaffe7" />
+
+
+```
+SELECT MAX(CAST(SUBSTRING(order_id,5,10) AS INT)) AS last_order_num
+FROM Bronze.dbo.swiggy
+```
+
+This value is stored in a pipeline variable.
+
+**Step 2 — Incremental Copy**
+
+Only new rows greater than the last processed order ID are loaded.
+<img width="1903" height="915" alt="image" src="https://github.com/user-attachments/assets/aec706e5-5613-49b2-b8a5-b615d0730850" />
+
+Example logic:
+
+```
+SELECT *
+FROM dbo.swiggy
+WHERE CAST(SUBSTRING(order_id,5,10) AS INT) > @{activity('last_order_num').output.firstRow.max_num}
+```
+
 
 ## 🥈 Silver Layer – Data Cleaning & Transformation
 
@@ -89,54 +139,6 @@ df=df.drop("rating")
 ```
 
 
-## 🚀 Incremental Data Pipeline (Fabric Data Factory)
-
-The pipeline was designed to load only new records using incremental logic.
-
-**Step 1 — Lookup Activity**
-
-Fetch the latest order number already processed.
-<img width="1909" height="914" alt="image" src="https://github.com/user-attachments/assets/d0c84253-c887-47ab-ac22-d0f30cbaffe7" />
-
-
-```
-SELECT MAX(CAST(SUBSTRING(order_id,5,10) AS INT)) AS last_order_num
-FROM Bronze.dbo.swiggy
-```
-
-This value is stored in a pipeline variable.
-
-**Step 2 — Incremental Copy**
-
-Only new rows greater than the last processed order ID are loaded.
-<img width="1903" height="915" alt="image" src="https://github.com/user-attachments/assets/aec706e5-5613-49b2-b8a5-b615d0730850" />
-
-Example logic:
-
-```
-SELECT *
-FROM dbo.swiggy
-WHERE CAST(SUBSTRING(order_id,5,10) AS INT) > @{activity('last_order_num').output.firstRow.max_num}
-```
-## ⏱️ Wait Activity (Important)
-
-A 30-second Wait Activity was introduced before the second Copy Data activity.
-
-Why this was necessary
-
-Microsoft Fabric sometimes **delays metadata updates** after a table load.
-
-Without the wait:
-
-1. The pipeline fetches stale metadata
-
-2. Newly inserted rows are not detected
-
-Adding the wait ensures:
-
-✔ Latest rows are visible                                                                                                                                                                                                                                                                                          
-✔ Incremental copy works reliably                                                                                                                                                                                                                                                                                        
-✔ Pipeline failures are prevented
 
 ## 🧹 Truncation Strategy
 
