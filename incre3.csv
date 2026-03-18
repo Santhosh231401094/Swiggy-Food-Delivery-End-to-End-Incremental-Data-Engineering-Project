@@ -1,3 +1,0 @@
-order_id,order_time,delivery_time,restaurant,cuisine,total_amount,rating,location,city,ordered_qty,book_table,online_order,distance_km
-ORD_4005,2023-12-01 16:10:00,2023-12-01 16:32:00,Empire Restaurant,North Indian,150.25,4.3/5,Indiranagar,Bengaluru,2,No,Yes,3.80
-ORD_4006,2023-12-01 17:05:00,2023-12-01 17:30:00,Truffles,American,220.60,4.6/5,Koramangala,Bengaluru,4,Yes,Yes,4.90
