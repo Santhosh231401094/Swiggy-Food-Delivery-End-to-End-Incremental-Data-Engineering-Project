@@ -1,3 +1,0 @@
-order_id,order_time,delivery_time,restaurant,cuisine,total_amount,rating,location,city,ordered_qty,book_table,online_order,distance_km
-ORD_4007,2023-12-01 18:10:00,2023-12-01 18:35:00,Meghana Foods,South Indian,185.40,4.4/5,Whitefield,Bengaluru,3,No,Yes,6.10
-ORD_4008,2023-12-01 19:05:00,2023-12-01 19:28:00,Nandhini,Mughlai,210.75,4.2/5,BTM Layout,Bengaluru,5,Yes,Yes,5.60
