@@ -6,6 +6,14 @@ This project builds a robust end-to-end data pipeline in Microsoft Fabric that p
 
 Instead of a simple one-time data load, this solution implements a Medallion Architecture (Bronze → Silver → Gold) along with an Incremental Loading pattern to ensure only new records are processed, improving performance, scalability, and cost efficiency.
 
+## Problem Statement
+
+Food delivery platforms generate large volumes of transactional data, including order details, delivery times, customer ratings, and location information. However, this data is often used only for reporting purposes and does not directly support operational decision-making.
+
+As a result, issues such as delivery delays, low-performing restaurants, and demand fluctuations are not identified proactively, leading to poor customer experience and inefficient operations.
+
+This project addresses this gap by building an end-to-end data engineering pipeline using Microsoft Fabric and implementing a decision-support layer that transforms analytical insights into actionable recommendations for improving delivery efficiency, service quality, and overall platform performance.
+
 ## 🏗️ Data Architecture
 
 The project follows the Medallion Architecture.
